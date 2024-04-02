@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace Shopping.Data.Entities
 {
@@ -11,6 +12,9 @@ namespace Shopping.Data.Entities
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener maximo {1} caractéres.")]
         public string Name { get; set; }
 
+        public ICollection<State> States { get; set; }
 
+        [Display(Name = "Departamentos/Estados")]
+        public int StatesNumber => States == null ? 0 : States.Count;
     }
 }
