@@ -92,7 +92,7 @@ namespace Shopping.Controllers
                         $"<hr/><br/><p><a href = \"{tokenLink}\">Confirmar Email</a></p>");
                 if (response.IsSuccess)
                 {
-                    ViewBag.Message = "Las instrucciones para habilitar el administrado han sido enviadas al correo.";
+                    ViewBag.Message = "Las instrucciones para habilitar el administrador han sido enviadas al correo.";
                     return View(model);
                 }
 
