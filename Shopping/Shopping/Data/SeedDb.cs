@@ -37,7 +37,6 @@ namespace Shopping.Data
             if (!_context.Products.Any())
             {
                 await AddProductAsync("Camisa Hombre", 270000M, 12F, new List<string>() { "Ropa" }, new List<string>() { "camisa hombre.png" });
-                await AddProductAsync("Camisa Atletico Nacional 2006", 450000M, 12F, new List<string>() { "Ropa", "Deportes" }, new List<string>() { "Camisanac-antique.png" });
                 await AddProductAsync("Jordan 1 DIOR", 13000000M, 12F, new List<string>() { "Ropa", "Calzado" }, new List<string>() { "j1 dior.png", "j1 dior 2.jpg" });
                 await AddProductAsync("Jordan 1 University Blue", 870000M, 12F, new List<string>() { "Ropa", "Calzado" }, new List<string>() { "j1 ublue.png" });
                 await AddProductAsync("Mouse Gamer Kalley", 100000M, 12F, new List<string>() { "Tecnologia", "Gamer" }, new List<string>() { "mouse.png" });
