@@ -39,8 +39,8 @@ namespace Shopping.Data
                 await AddProductAsync("Camisa Hombre", 270000M, 12F, new List<string>() { "Ropa" }, new List<string>() { "camisa hombre.png" });
                 await AddProductAsync("Jordan 1 DIOR", 13000000M, 12F, new List<string>() { "Ropa", "Calzado" }, new List<string>() { "j1 dior.png", "j1 dior 2.jpg" });
                 await AddProductAsync("Jordan 1 University Blue", 870000M, 12F, new List<string>() { "Ropa", "Calzado" }, new List<string>() { "j1 ublue.png" });
-                await AddProductAsync("Mouse Gamer Kalley", 100000M, 12F, new List<string>() { "Tecnologia", "Gamer" }, new List<string>() { "mouse.png" });
-                await AddProductAsync("Samsung S20", 2300000M, 12F, new List<string>() { "Tecnologia", "Celulares" }, new List<string>() { "s201.png", "s202.png", "s203.png" });
+                await AddProductAsync("Mouse Gamer Kalley", 100000M, 12F, new List<string>() { "Tecnología", "Gamer" }, new List<string>() { "mouse.png" });
+                await AddProductAsync("Samsung S20", 2300000M, 12F, new List<string>() { "Tecnología", "Celulares" }, new List<string>() { "s201.png", "s202.png", "s203.png" });
                 await _context.SaveChangesAsync();
             }
 
