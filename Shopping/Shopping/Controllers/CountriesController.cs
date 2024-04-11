@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Shopping.Data;
 using Shopping.Data.Entities;
 using Shopping.Models;
+using Vereyon.Web;
 
 namespace Shopping.Controllers
 {
@@ -16,10 +17,12 @@ namespace Shopping.Controllers
     public class CountriesController : Controller
     {
         private readonly DataContext _context;
+        private readonly IFlashMessage _flashMessage;
 
-        public CountriesController(DataContext context)
+        public CountriesController(DataContext context, IFlashMessage flashMessage)
         {
             _context = context;
+            _flashMessage = flashMessage;
         }
 
         public async Task<IActionResult> Index()
@@ -71,16 +74,16 @@ namespace Shopping.Controllers
                 {
                     if (dbUddateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe un pais con el mismo nombre.");
+                        _flashMessage.Danger(string.Empty, "Ya existe un pais con el mismo nombre.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUddateException.InnerException.Message);
+                        _flashMessage.Danger(string.Empty, dbUddateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                 }
             }
             return View(country);
@@ -122,16 +125,16 @@ namespace Shopping.Controllers
                 {
                     if (dbUddateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe un pais con el mismo nombre.");
+                        _flashMessage.Danger(string.Empty, "Ya existe un pais con el mismo nombre.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUddateException.InnerException.Message);
+                        _flashMessage.Danger(string.Empty, dbUddateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                 }
 
             }
@@ -214,16 +217,16 @@ namespace Shopping.Controllers
                 {
                     if (dbUddateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe un departamento/estado con el mismo nombre en este país.");
+                        _flashMessage.Danger(string.Empty, "Ya existe un departamento/estado con el mismo nombre en este país.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUddateException.InnerException.Message);
+                        _flashMessage.Danger(string.Empty, dbUddateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                 }
             }
             return View(model);
@@ -279,16 +282,16 @@ namespace Shopping.Controllers
                 {
                     if (dbUddateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe un departamento/estado con el mismo nombre en este país.");
+                        _flashMessage.Danger(string.Empty, "Ya existe un departamento/estado con el mismo nombre en este país.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUddateException.InnerException.Message);
+                        _flashMessage.Danger(string.Empty, dbUddateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                 }
 
             }
@@ -391,16 +394,16 @@ namespace Shopping.Controllers
                 {
                     if (dbUddateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe una ciudad con el mismo nombre en este departamento/estado.");
+                        _flashMessage.Danger(string.Empty, "Ya existe una ciudad con el mismo nombre en este departamento/estado.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUddateException.InnerException.Message);
+                        _flashMessage.Danger(string.Empty, dbUddateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                 }
             }
             return View(model);
@@ -456,16 +459,16 @@ namespace Shopping.Controllers
                 {
                     if (dbUddateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe una ciudad con el mismo nombre en este departamento/estado.");
+                        _flashMessage.Danger(string.Empty, "Ya existe una ciudad con el mismo nombre en este departamento/estado.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUddateException.InnerException.Message);
+                        _flashMessage.Danger(string.Empty, dbUddateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                 }
 
             }

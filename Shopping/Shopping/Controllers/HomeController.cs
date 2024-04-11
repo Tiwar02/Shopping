@@ -7,6 +7,7 @@ using Shopping.Data.Entities;
 using Shopping.Helpers;
 using Shopping.Models;
 using System.Diagnostics;
+using Vereyon.Web;
 
 namespace Shopping.Controllers
 {
@@ -16,13 +17,15 @@ namespace Shopping.Controllers
         private readonly DataContext _context;
         private readonly IUserHelper _userHelper;
         private readonly IOrderHelper _ordersHelper;
+        private readonly IFlashMessage _flashMessage;
 
-        public HomeController(ILogger<HomeController> logger, DataContext context, IUserHelper userHelper, IOrderHelper ordersHelper)
+        public HomeController(ILogger<HomeController> logger, DataContext context, IUserHelper userHelper, IOrderHelper ordersHelper, IFlashMessage flashMessage)
         {
             _logger = logger;
             _context = context;
             _userHelper = userHelper;
             _ordersHelper = ordersHelper;
+            _flashMessage = flashMessage;
         }
 
         public async Task<IActionResult> Index()
@@ -220,7 +223,7 @@ namespace Shopping.Controllers
                 return RedirectToAction(nameof(OrderSuccess));
             }
 
-            ModelState.AddModelError(string.Empty, response.Message);
+            _flashMessage.Danger(string.Empty, response.Message);
             return View(model);
         }
 
@@ -330,7 +333,7 @@ namespace Shopping.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                     return View(model);
                 }
 

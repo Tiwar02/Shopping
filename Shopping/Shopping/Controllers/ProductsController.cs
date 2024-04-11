@@ -6,6 +6,7 @@ using Shopping.Data;
 using Shopping.Data.Entities;
 using Shopping.Helpers;
 using Shopping.Models;
+using Vereyon.Web;
 
 namespace Shopping.Controllers
 {
@@ -15,12 +16,14 @@ namespace Shopping.Controllers
         private readonly IBlobHelper _blobHelper;
         private readonly ICombosHelper _combosHelper;
         private readonly DataContext _context;
+        private readonly IFlashMessage _flashMessage;
 
-        public ProductsController(IBlobHelper blobHelper, ICombosHelper combosHelper, DataContext context)
+        public ProductsController(IBlobHelper blobHelper, ICombosHelper combosHelper, DataContext context, IFlashMessage flashMessage)
         {
             _blobHelper = blobHelper;
             _combosHelper = combosHelper;
             _context = context;
+            _flashMessage = flashMessage;
         }
 
         public async Task<IActionResult> Index()
@@ -87,16 +90,16 @@ namespace Shopping.Controllers
                 {
                     if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe un producto con el mismo nombre.");
+                        _flashMessage.Danger(string.Empty, "Ya existe un producto con el mismo nombre.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                        _flashMessage.Danger(string.Empty, dbUpdateException.InnerException.Message);
                     }
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                 }
             }
 
@@ -153,16 +156,16 @@ namespace Shopping.Controllers
             {
                 if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                 {
-                    ModelState.AddModelError(string.Empty, "Ya existe un producto con el mismo nombre.");
+                    _flashMessage.Danger(string.Empty, "Ya existe un producto con el mismo nombre.");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                    _flashMessage.Danger(string.Empty, dbUpdateException.InnerException.Message);
                 }
             }
             catch (Exception exception)
             {
-                ModelState.AddModelError(string.Empty, exception.Message);
+                _flashMessage.Danger(string.Empty, exception.Message);
             }
 
             return View(model);
@@ -233,7 +236,7 @@ namespace Shopping.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                 }
             }
 
@@ -316,7 +319,7 @@ namespace Shopping.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, exception.Message);
+                    _flashMessage.Danger(string.Empty, exception.Message);
                 }
             }
             
