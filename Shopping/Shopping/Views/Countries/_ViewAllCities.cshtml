@@ -13,7 +13,7 @@
                 @Html.DisplayNameFor(model => model.Cities.FirstOrDefault().Name)
             </th>
             <th>
-                <a onclick="showInPopup('@Url.Action("AddCity", "Countries", new { id = Model.Id }, Context.Request.Scheme)' , 'Nueva Ciudad')" class="btn btn-sm btn-primary text-white"><i class="fa fa-plus-circle"></i> Ciudad</a>
+                <a onclick="showInPopup('@Url.Action("AddCity", "Countries", new { id = Model.Id }, Context.Request.Scheme)' , 'Nueva Ciudad')" class="btn btn-sm btn-success text-white"><i class="fa fa-plus-circle"></i> Ciudad</a>
             </th>
         </tr>
     </thead>
